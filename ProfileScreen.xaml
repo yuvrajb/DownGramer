@@ -1,0 +1,68 @@
+﻿<Controls:MetroWindow 
+    xmlns:Controls="clr-namespace:MahApps.Metro.Controls;assembly=MahApps.Metro"
+    x:Class="DownGramer.ProfileScreen"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    Title="Profile"
+    Height="640" 
+    Width="1329"
+    HorizontalContentAlignment="Center" 
+    VerticalContentAlignment="Center"
+    Background="#FF2D2D30"
+    Opacity="1"
+    GlowBrush="{DynamicResource AccentColorBrush}"
+    WindowStartupLocation="CenterScreen" Name="PScreen" MinWidth="800" MinHeight="713" MaxWidth="1329" MaxHeight="713" Loaded="PScreen_Loaded" Icon="Resources/Images/downgram_icon_64.ico" SizeChanged="PScreen_SizeChanged">
+
+    <Window.Resources>
+        <ResourceDictionary>
+            <ResourceDictionary.MergedDictionaries>
+                <ResourceDictionary Source="/Resources/Icons.xaml" />
+            </ResourceDictionary.MergedDictionaries>
+        </ResourceDictionary>
+    </Window.Resources>
+
+    <Controls:MetroWindow.RightWindowCommands>
+        <Controls:WindowCommands>
+            <Button Content="" Name="ApplicationVersion" ToolTip="Version"/>
+            <Button Name="DownloadButton" PreviewMouseDown="DownloadButton_PreviewMouseDown" ToolTip="Download Now">
+                <StackPanel Orientation="Horizontal">
+                    <Rectangle Width="10" Height="10" Fill="{Binding RelativeSource={RelativeSource AncestorType=Button}, Path=Foreground}">
+                        <Rectangle.OpacityMask>
+                            <VisualBrush Stretch="Fill" Visual="{StaticResource appbar_download}" />
+                        </Rectangle.OpacityMask>
+                    </Rectangle>
+                    <TextBlock Margin="4 0 0 0"
+                   VerticalAlignment="Center"
+                   Text="Download" />
+                </StackPanel>
+            </Button>
+            <Button Name="LoadOnScrollButton">
+                <StackPanel Orientation="Horizontal">
+                    <Rectangle Width="10" Height="10" Fill="{Binding RelativeSource={RelativeSource AncestorType=Button}, Path=Foreground}" Name="RectangleLoadOnScroll">
+                        <Rectangle.OpacityMask>
+                            <VisualBrush Stretch="Fill" Visual="{StaticResource appbar_thumbs_down}" />
+                        </Rectangle.OpacityMask>
+                    </Rectangle>
+                    <TextBlock Margin="4 0 0 0"
+                   VerticalAlignment="Center"
+                   Text="Load On Scroll" />
+                </StackPanel>
+            </Button>
+        </Controls:WindowCommands>
+    </Controls:MetroWindow.RightWindowCommands>
+
+    <Canvas Width="1256" Height="640" Name="CanvasCurtain">
+        <!-- flipview -->
+        <Controls:FlipView Height="640" Width="640" IsBannerEnabled="False" Name="ProfileFlipView" Background="White">
+        </Controls:FlipView>
+
+        <!-- feeds -->
+        <Canvas Width="640" Height="640" Name="CanvasFeeds" Visibility="Visible" Canvas.Left="640">
+            <ScrollViewer Height="640" Name="ScrollViewerFeeds" HorizontalAlignment="Stretch" VerticalAlignment="Stretch"  CanContentScroll="False" ScrollChanged="ScrollViewerFeeds_ScrollChanged">
+                <WrapPanel Height="Auto" Name="WrapPanelFeeds" Width="640" Background="White" Visibility="Visible" > <!-- 142 -->
+                    <Controls:ProgressRing Name="ProgressRingFeeds" IsActive="True" Margin="290,290,0,0" Visibility="Visible"/>
+                </WrapPanel>
+            </ScrollViewer>
+        </Canvas>
+    </Canvas>
+</Controls:MetroWindow>
