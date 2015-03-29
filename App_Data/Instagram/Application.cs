@@ -13,9 +13,9 @@ namespace DownGramer.App_Data.Instagram
 {
     public class Application
     {
-        private String ClientId = "c53c72f4d6624ea5a97773a179f02804";
-        private String ClientSecret = "c21b1f4554d44c079c4a2f6f62f4f561";
-        private String RedirectUri = "http://downgramer.netai.net/";
+        private String ClientId = "CLINET_ID";
+        private String ClientSecret = "CLIENT_SECRET";
+        private String RedirectUri = "REDIRECT_URI";
         private List<Scope> Scopes = new List<Scope>(){Scope.basic};
         private InstaConfig Config = null;
         private LogException MyException = null;
