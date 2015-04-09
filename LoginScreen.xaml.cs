@@ -494,6 +494,8 @@ namespace DownGramer
                                                 }
 
                                                 // redirect to feeds window
+                                                this.Hide();
+                                                new FeedsScreen(Config, AuthorizedUser).Visibility = System.Windows.Visibility.Visible;
                                             }
                                             catch (Exception Ex)
                                             {
